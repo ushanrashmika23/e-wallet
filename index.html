@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" type="text/css" href="style/index.css" />
+    <link rel="stylesheet" href="style/webassets/all.css" />
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/chart.js/dist/chart.umd.min.js"></script>
+    <title>E-Wallet</title>
+</head>
+
+<body>
+    <nav>
+        <div class="nav-icon-top">
+            <div class="nav-icon" id="logo">
+                <i class="fa-duotone fa-lightbulb-dollar doutone"></i>
+            </div>
+            <!-- nav-icon -->
+            <div class="nav-icon">
+                <i class="fa-light fa-wallet"></i>
+            </div>
+            <!-- nav-icon -->
+            <div class="nav-icon">
+                <i class="fa-light fa-piggy-bank"></i>
+            </div>
+            <!-- nav-icon -->
+            <div class="nav-icon">
+                <i class="fa-light fa-chart-line"></i>
+            </div>
+            <!-- nav-icon -->
+            <div class="nav-icon">
+                <i class="fa-light fa-gear"></i>
+            </div>
+            <!-- nav-icon -->
+        </div>
+        <!-- nav-icon-top -->
+
+        <div class="nav-icon-bottom">
+            <!-- <div class="nav-icon">
+                <i class="fa-light fa-sun-bright"></i>
+            </div> -->
+            <!-- nav-icon -->
+            <div class="nav-icon">
+                <i class="fa-duotone fa-circle-user doutone"></i>
+            </div>
+            <!-- nav-icon -->
+            <div class="nav-icon">
+                <i class="fa-light fa-arrow-right-from-bracket"></i>
+            </div>
+            <!-- nav-icon -->
+        </div>
+        <!-- nav-icon-bottom -->
+    </nav>
+    <div id="content">
+        <header>
+            <h1>
+                <span class="red">E</span>-Wa<span class="blue">l</span><span class="green">l</span>et
+            </h1>
+            <!-- <input type="text"> -->
+            <div class="header-icons">
+                <h2>User Name</h2>
+                <div class="header-icon-container">
+                    <div class="icon">
+                        <i class="fa-solid fa-user-alien"></i>
+                    </div>
+                    <!-- icon -->
+                    <div class="icon">
+                        <i class="fa-solid fa-bell"></i>
+                        <div class="noti-badge"></div>
+                    </div>
+                    <!-- icon -->
+                    <div class="icon">
+                        <i class="fa-solid fa-pen"></i>
+                    </div>
+                    <!-- icon -->
+                    <div class="icon">
+                        <i class="fa-solid fa-gear"></i>
+                    </div>
+                    <!-- icon -->
+                </div>
+                <!-- header-icon-container -->
+            </div>
+            <!-- header-icon -->
+        </header>
+        <!-- header -->
+
+        <div id="wallet-page" class="page">
+            <h1>My Wallets</h1>
+
+            <div class="left-panel">
+                <div class="wallet-detail">
+
+                    <div class="wallet-card w-card-1">
+                        <h2>Cache Wallet</h2>
+                        <i class="fa-solid fa-ellipsis-vertical"></i>
+                        <div class="wallet-data">
+                            <h3>Ballance <br><span>+ 5,458,410.00</span></h3>
+                            <div class="wallet-button">
+                                <button><i class="fa-regular fa-coins"></i>&nbsp; Income</button>
+                                <button><i class="fa-regular fa-money-check-dollar-pen"></i>&nbsp; Expend</button>
+                            </div>
+                            <!-- wallet-data -->
+                        </div>
+                        <div class="wallet-chart">
+                            <canvas id="cache-chart"></canvas>
+                        </div>
+                    </div>
+                    <!-- wallet-card -->
+                    <div class="wallet-card w-card-2">
+                        <h2>Bank Wallet</h2>
+                        <i class="fa-solid fa-ellipsis-vertical"></i>
+                        <div class="wallet-data">
+                            <h3>Ballance <br> <span style="color: var(--red);">- 5,458,410.00</span></h3>
+                            <div class="wallet-button">
+                                <button><i class="fa-regular fa-coins"></i>&nbsp; Income</button>
+                                <button><i class="fa-regular fa-money-check-dollar-pen"></i>&nbsp; Expend</button>
+                            </div>
+                        </div>
+                        <!-- wallet-data -->
+                        <div class="wallet-chart">
+                            <canvas id="bank-chart"></canvas>
+                        </div>
+                    </div>
+                    <!-- wallet-card -->
+                    <script>
+                        // config
+                        const cacheData = {
+                            type: 'bar',
+                            data: {
+                                labels: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'],
+                                datasets: [{
+                                    label: 'Income',
+                                    data: [18, 12, 6, 5, 12, 3, 9],
+                                    backgroundColor: 'rgba(21, 32, 50, 1)',
+                                    borderColor: 'rgba(21, 32, 50, 1)',
+                                    borderRadius: 5,
+                                    tension: .5,
+                                    borderWidth: 1,
+                                }, {
+                                    label: 'Expends',
+                                    data: [8, 13, 5, 9, 11, 10, 18],
+                                    backgroundColor: 'rgba(21, 32, 50, .5)',
+                                    borderColor: 'rgba(21, 32,50, .5)',
+                                    borderRadius: 5,
+                                    tension: .5,
+                                    borderWidth: 1,
+                                }]
+                            },
+                            options: {
+                                maintainAspectRatio: false,
+                                scales: {
+                                    x: {
+                                        display: 1,
+                                        grid: {
+                                            display: 0
+                                        }
+                                    },
+                                    y: {
+                                        display: 1,
+                                        grid: {
+                                            display: 0
+                                        }
+                                    }
+                                }
+                            }
+                        };
+                        // render init block
+                        const cacheChart = new Chart(
+                            document.getElementById('cache-chart'),
+                            cacheData
+                        );
+                        cacheChart.resize();
+
+
+                        // config
+                        const bankData = {
+                            type: 'bar',
+                            data: {
+                                labels: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'],
+                                datasets: [{
+                                    label: 'Income',
+                                    data: [18, 12, 6, 5, 12, 8, 9],
+                                    backgroundColor: 'rgba(21, 32, 50, 1)',
+                                    borderColor: 'rgba(21, 32, 50, 1)',
+                                    borderRadius: 5,
+                                    tension: .5,
+                                    borderWidth: 1,
+                                }, {
+                                    label: 'Expends',
+                                    data: [8, 13, 5, 9, 11, 10, 18],
+                                    backgroundColor: 'rgba(21, 32, 50, .5)',
+                                    borderColor: 'rgba(21, 32, 50, .5)',
+                                    borderRadius: 5,
+                                    tension: .5,
+                                    borderWidth: 1,
+                                }]
+                            },
+                            options: {
+                                maintainAspectRatio: false,
+                                plugins: {
+                                    legend: {
+                                        position: 'top',
+                                        labels: {
+                                            color: "rgba(21, 32, 50, 1)",
+                                        }
+                                    },
+                                },
+                                scales: {
+                                    x: {
+                                        ticks: {
+                                            color: 'rgba(21, 32, 50, 1)',
+                                        },
+                                        display: 1,
+                                        grid: {
+                                            display: 0,
+                                        }
+                                    },
+                                    y: {
+                                        ticks: {
+                                            color: 'rgba(21, 32, 50, 1)',
+                                        },
+                                        display: 1,
+                                        grid: {
+                                            display: 0
+                                        },
+                                    }
+                                }
+                            }
+                        };
+                        // render init block
+                        const bankChart = new Chart(
+                            document.getElementById('bank-chart'),
+                            bankData
+                        );
+                        bankChart.resize();
+                    </script>
+                </div>
+                <!-- wallet-details -->
+
+                <div class="table">abc</div>
+                <!-- table -->
+            </div>
+            <!-- left-panel -->
+
+            <div class="right-panel">sidebar</div>
+            <!-- right-panel -->
+        </div>
+        <!-- wallet-page -->
+    </div>
+    <!--#content-->
+</body>
+<script src="js/main.js"></script>
+
+</html>
