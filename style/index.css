@@ -34,7 +34,27 @@ body {
     width: 100%;
     padding: 4px 5px;
 }
-
+.text-box{
+    width: fit-content;
+    height: fit-content;
+    border: 1px solid var(--d-black);
+    padding: 5px;
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+}
+.text-box input{
+    border: none;
+    outline: none;
+}
+.text-box i:first-child{
+    margin-left: 4px;
+    /* background-color: #20639b; */
+}
+.text-box .fa-horizontal-rule{
+    transform: rotate(90deg);
+    /* background-color: #00cd89; */
+}
 nav {
     background-color: var(--l-black);
     color: var(--l-gray);

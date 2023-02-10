@@ -4,61 +4,21 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Getting Started with Chart JS with www.chartjs3.com</title>
+    <link rel="stylesheet" href="style/webassets/all.css" />
+    <link rel="stylesheet" href="style/index.css">
+    <style>
+        body{
+            display: grid;
+            place-content: center;
+        }
+    </style>
 </head>
 
 <body>
-    <div class="chartBox" style="width:1000px;">
-        <canvas id="myChart"></canvas>
+    <div class="text-box">
+        <i class="fa-light fa-address-card"></i><i class="fa-light fa-horizontal-rule"></i>
+        <input type="text">
     </div>
-    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/chart.js/dist/chart.umd.min.js"></script>
-    <script>
-        // config 
-        const config = {
-            type: 'line',
-            data: {
-                labels: ['Mon', 'Tue', 'Wed', 'Thu'],
-                datasets: [{
-                    label: 'Income',
-                    data: [18, 12, 6, 5],
-                    backgroundColor: 'rgba(255, 26, 104, 1)',
-                    borderColor: 'rgba(255, 26, 104, 1)',
-                    tension: .5,
-                    borderWidth: 4,
-                }, {
-                    label: 'Expends',
-                    data: [8, 13, 5, 9],
-                    backgroundColor: 'rgba(23, 123, 142, 1)',
-                    borderColor: 'rgba(23, 123, 142, 1)',
-                    tension: .5,
-                    borderWidth: 4
-                }]
-            },
-            options: {
-                scales: {
-                    x: {
-                        display: false,
-                        grid: {
-                            display: false
-                        }
-                    },
-                    y: {
-                        display: false,
-                        grid: {
-                            display: false
-                        }
-                    }
-                }
-            }
-        };
-
-        // render init block
-        const myChart = new Chart(
-            document.getElementById('myChart'),
-            config
-        );
-    </script>
-
 </body>
 
 </html>
